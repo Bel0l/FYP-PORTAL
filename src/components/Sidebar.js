@@ -1,9 +1,12 @@
 import React from 'react';
+import logo from "../assets/logo.png";
+import { Icon } from '@iconify/react';
+
 
 function Sidebar() {
   return (
     <div>
-      <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200">
+      <nav className="fixed top-0 z-50 w-full bg-[#6532A5] border-b border-gray-200">
         <div className="px-3 py-3 lg:px-5 lg:pl-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-start rtl:justify-end">
@@ -29,14 +32,14 @@ function Sidebar() {
                   ></path>
                 </svg>
               </button>
-              <a href="https://flowbite.com" className="flex ms-2 md:me-24">
+              <a href="" className="flex ms-2 md:me-24">
                 <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src={logo}
                   className="h-8 me-3"
                   alt="FlowBite Logo"
                 />
-                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-gray-900">
-                  Flowbite
+                <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap text-white">
+                  FYP Portal
                 </span>
               </a>
             </div>
@@ -118,6 +121,33 @@ function Sidebar() {
               </a>
             </li>
             {/* Other sidebar items */}
+            <li>
+   <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+      <svg className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+         <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+         <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+      </svg>
+      <span className="ms-3">Projects</span>
+   </a>
+</li>
+<li>
+   <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+   <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5L12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
+      <span className="ms-3">Supervisors</span>
+   </a>
+</li>
+<li>
+   <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+   <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.923 14.885V9.562l-7.146 3.875q-.366.211-.774.211q-.407 0-.78-.212L4.388 9.702q-.217-.13-.32-.308T3.965 9t.103-.394t.32-.308l6.834-3.724q.182-.102.375-.152q.192-.05.403-.05t.403.052t.374.159l7.717 4.18q.205.104.317.3t.112.422v5.4q0 .212-.144.356t-.356.144t-.357-.144t-.143-.356m-8.7 3.379L6.839 15.89q-.385-.218-.612-.602Q6 14.907 6 14.463v-3.108l5.223 2.833q.366.211.774.211q.407 0 .78-.212L18 11.354v3.111q0 .45-.227.83q-.227.378-.611.596l-4.385 2.373q-.184.105-.378.158t-.399.053t-.399-.053t-.378-.158"/></svg>
+      <span className="ms-3">Students</span>
+   </a>
+</li>
+<li>
+   <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
+   <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M4 12a1 1 0 0 0 1 1h7.59l-2.3 2.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l4-4a1 1 0 0 0 .21-.33a1 1 0 0 0 0-.76a1 1 0 0 0-.21-.33l-4-4a1 1 0 1 0-1.42 1.42l2.3 2.29H5a1 1 0 0 0-1 1M17 2H7a3 3 0 0 0-3 3v3a1 1 0 0 0 2 0V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-3a1 1 0 0 0-2 0v3a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V5a3 3 0 0 0-3-3"/></svg>
+      <span className="ms-3">SignOut</span>
+   </a>
+</li>
           </ul>
         </div>
       </aside>
