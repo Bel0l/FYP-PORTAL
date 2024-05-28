@@ -29,7 +29,7 @@ const Login = () => {
               // value={username}
               // onChange={(e) => setUsername(e.target.value)}
               placeholder="Username..."
-              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-green-300"
+              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div>
@@ -40,7 +40,7 @@ const Login = () => {
               // value={password}
               // onChange={(e) => setPassword(e.target.value)}
               placeholder="Password..."
-              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-green-300"
+              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <div>
@@ -51,7 +51,7 @@ const Login = () => {
               // value={username}
               // onChange={(e) => setUsername(e.target.value)}
               placeholder=""
-              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-green-300"
+              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
             />
           </div>
           <button

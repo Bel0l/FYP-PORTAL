@@ -3,6 +3,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 import Login from './components/Login';   
+import WelcomeAdmin from './components/WelcomeAdmin';
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <p>Welcome to the home page.</p> */}
           </div>
         } />
+        <Route path='/WelcomeAdmin' element={<WelcomeAdmin/>}/>
       </Routes>
     </Router>
   );
