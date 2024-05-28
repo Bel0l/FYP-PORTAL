@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, } from 'react-router-dom';
 import Login from './components/Login';   
 import WelcomeAdmin from './components/WelcomeAdmin';
+import AdminDashboard from './components/AdminDashboard';
 
 const App = () => {
   return (
@@ -19,7 +20,10 @@ const App = () => {
           </div>
         } />
         <Route path='/WelcomeAdmin' element={<WelcomeAdmin/>}/>
+      <Route path='/AdminDashboard' element={<AdminDashboard/>}/>
       </Routes>
+
+
     </Router>
   );
 };
