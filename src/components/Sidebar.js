@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from "../assets/logo.png";
-import { Icon } from '@iconify/react';
+// import { Icon } from '@iconify/react';
 
 
 function Sidebar() {
