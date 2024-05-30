@@ -44,16 +44,19 @@ const Login = () => {
             />
           </div>
           <div>
-            <label htmlFor="Select Role" className="text-sm font-bold">Select Role:</label>
-            <input
-              // type="text"
-              // id="username"
-              // value={username}
-              // onChange={(e) => setUsername(e.target.value)}
-              placeholder=""
-              className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
-            />
-          </div>
+  <label htmlFor="SelectRole" className="text-sm font-bold">
+    Select Role:
+  </label>
+  <select
+    id="SelectRole"
+    className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
+  >
+    <option value="" disabled selected>Select a role</option>
+    <option value="admin">Admin</option>
+    <option value="user">Supervisor</option>
+    <option value="manager">Student</option>
+  </select>
+</div>
           <button
             type="submit"
             className="bg-[#6532A5] text-white p-2 px-3 rounded-md font-semibold"
