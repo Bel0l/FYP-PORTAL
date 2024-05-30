@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Sidebar from './Sidebar';
+import StudentSideBar from './StudentSideBar';
 
 const StudentDashboard = () => {
   return (
     <div>
       <div>
-        <Sidebar />
+        <StudentSideBar />
       </div>
 
       <div className='container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 '>
@@ -39,6 +39,16 @@ const StudentDashboard = () => {
             <br/>
             <span className='font-semibold'>Follow Up Your Project</span>
           </div>
+          <div className='mt-9 -ml-1'>
+          <Link to='/StudentProfile'>
+          <button
+                type="submit"
+                className="bg-[#6532A5] text-white p-2 px-3 rounded-md font-semibold"
+              >
+                Complete Profile
+              </button>
+              </Link>
+              </div>
         </div>
       </div>
     </div>

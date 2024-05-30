@@ -11,6 +11,8 @@ import Projects from './components/Projects';
 import StudentProjectCreation from './components/StudentProjectCreation';
 import StudentProfile from './components/StudentProfile';
 import StudentDashbaord from './components/StudentDashboard';
+import StudentSidebar from './components/StudentSideBar';
+import StudentProject from './components/StudentProject';
 
 const App = () => {
   return (
@@ -33,6 +35,10 @@ const App = () => {
       <Route path='/StudentProjectCreation' element={<StudentProjectCreation/>}/>
       <Route path='/StudentProfile' element={<StudentProfile/>}/>
       <Route path='/StudentDashboard' element={<StudentDashbaord/>}/>
+      <Route path='/StudentSideBar' element={<StudentSidebar/>}/>
+      <Route path='/StudentProject' element={<StudentProject/>}/>
+
+
 
 
 
