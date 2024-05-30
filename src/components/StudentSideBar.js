@@ -6,7 +6,7 @@ import projectplan from "../assets/projectplan.png"
 import { Link } from 'react-router-dom';
 
 
-function Sidebar() {
+function StudentSidebar() {
   return (
     <div>
       <nav className="fixed top-0 z-50 w-full bg-[#6532A5] border-b border-gray-200">
@@ -126,27 +126,27 @@ function Sidebar() {
             {/* Other sidebar items */}
         
             <li>
-              <Link to='/AdminDashboard1'>
+              <Link to='/StudentProfile'>
    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
       <img src={projectplan} alt="" className='w-7 -ml-1' />
-      <span className="ms-2">Projects</span>
+      <span className="ms-2">My profile</span>
    </a>
    </Link>
 </li>
 <li>
-  <Link to='/AdminDashboardSupervisors'>
+  <Link to='/StudentProjectCreation'>
      <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M16 8c0 2.21-1.79 4-4 4s-4-1.79-4-4l.11-.94L5 5.5L12 2l7 3.5v5h-1V6l-2.11 1.06zm-4 6c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4"/></svg>
-      <span className="ms-3">Supervisors</span>
+      <span className="ms-3">Create Project</span>
    </a>
    </Link>
 
 </li>
 <li>
-  <Link to='/AdminDashboard1'>
+  <Link to='/StudentProject'>
      <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
    <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24"><path fill="currentColor" d="M19.923 14.885V9.562l-7.146 3.875q-.366.211-.774.211q-.407 0-.78-.212L4.388 9.702q-.217-.13-.32-.308T3.965 9t.103-.394t.32-.308l6.834-3.724q.182-.102.375-.152q.192-.05.403-.05t.403.052t.374.159l7.717 4.18q.205.104.317.3t.112.422v5.4q0 .212-.144.356t-.356.144t-.357-.144t-.143-.356m-8.7 3.379L6.839 15.89q-.385-.218-.612-.602Q6 14.907 6 14.463v-3.108l5.223 2.833q.366.211.774.211q.407 0 .78-.212L18 11.354v3.111q0 .45-.227.83q-.227.378-.611.596l-4.385 2.373q-.184.105-.378.158t-.399.053t-.399-.053t-.378-.158"/></svg>
-      <span className="ms-3">Students</span>
+      <span className="ms-3">My Project</span>
    </a>
    </Link>
 
@@ -168,4 +168,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default StudentSidebar;

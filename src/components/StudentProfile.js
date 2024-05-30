@@ -1,12 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Sidebar from './Sidebar'
+import StudentSideBar from './StudentSideBar'
 
 const StudentProfile = () => {
     return (
         <div>
             <div>
-                <Sidebar/>
+                <StudentSideBar/>
             </div>
 
             <div className='container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 '>
