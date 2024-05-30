@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-function AdminDashboard1() {
+function AdminDashboardSupervisors() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -10,12 +10,11 @@ function AdminDashboard1() {
       .then(response => response.json())
       .then(data => {
         const users = data.results.map((user, index) => ({
-          batchNo: index + 1,
-          batchStream: user.name.first + " " + user.name.last,
-          regNo: user.login.username,
-          name: user.name.first + " " + user.name.last,
-          enrollmentYear: new Date(user.registered.date).getFullYear(),
-          degreeType: user.email
+          id: index + 1,
+          supervisorName: user.name.first + " " + user.name.last,
+          specialization: user.location.city,
+          noOfGroups: Math.floor(Math.random() * 10) + 1, // Random number of groups
+          groupAvailable: Math.random() > 0.5 ? "Yes" : "No", // Random yes/no for group available
         }));
         setData(users);
       });
@@ -72,23 +71,32 @@ function AdminDashboard1() {
         <table className="table-auto w-full">
           <thead className="">
             <tr className="header bg-blue-200">
-              <th>Batch No</th>
-              <th>Batch Stream</th>
-              <th>Reg No</th>
-              <th>Name</th>
-              <th>Enrollment Year</th>
-              <th>Degree Type</th>
+              <th>ID</th>
+              <th>Supervisor Name</th>
+              <th>Specialization</th>
+              <th>No of Groups</th>
+              <th>Group Available</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody className="">
             {data.map((user, index) => (
               <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
-                <td>{user.batchNo}</td>
-                <td>{user.batchStream}</td>
-                <td>{user.regNo}</td>
-                <td>{user.name}</td>
-                <td>{user.enrollmentYear}</td>
-                <td>{user.degreeType}</td>
+                <td>{user.id}</td>
+                <td>{user.supervisorName}</td>
+                <td>{user.specialization}</td>
+                <td>{user.noOfGroups}</td>
+                <td>{user.groupAvailable}</td>
+                <td>
+                  <div className="flex">
+                    <button className="rounded px-2 py-1 text-xs bg-green-500 text-white hover:bg-green-600 duration-300">
+                      ACCEPT
+                    </button>
+                    <button className="rounded mx-2 px-2 py-1 text-xs bg-red-500  text-white hover:bg-red-600  duration-300">
+                      REMOVE
+                    </button>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -98,4 +106,4 @@ function AdminDashboard1() {
   );
 }
 
-export default AdminDashboard1;
+export default AdminDashboardSupervisors;

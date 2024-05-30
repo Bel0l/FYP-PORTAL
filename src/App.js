@@ -6,6 +6,11 @@ import Login from './components/Login';
 import WelcomeAdmin from './components/WelcomeAdmin';
 import AdminDashboard from './components/AdminDashboard';
 import AdminDashboard1 from './components/AdminDashboard1';
+import AdminDashboardSupervisors from './components/AdminDashboardSupervisors';
+import Projects from './components/Projects';
+import StudentProjectCreation from './components/StudentProjectCreation';
+import StudentProfile from './components/StudentProfile';
+import StudentDashbaord from './components/StudentDashboard';
 
 const App = () => {
   return (
@@ -23,6 +28,16 @@ const App = () => {
         <Route path='/WelcomeAdmin' element={<WelcomeAdmin/>}/>
       <Route path='/AdminDashboard' element={<AdminDashboard/>}/>
       <Route path='/AdminDashboard1' element={<AdminDashboard1/>}/>
+      <Route path='/AdminDashboardSupervisors' element={<AdminDashboardSupervisors/>}/>
+      <Route path='/Projects' element={<Projects/>}/>
+      <Route path='/StudentProjectCreation' element={<StudentProjectCreation/>}/>
+      <Route path='/StudentProfile' element={<StudentProfile/>}/>
+      <Route path='/StudentDashboard' element={<StudentDashbaord/>}/>
+
+
+
+
+
 
       </Routes>
 
