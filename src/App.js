@@ -13,6 +13,8 @@ import StudentProfile from './components/StudentProfile';
 import StudentDashbaord from './components/StudentDashboard';
 import StudentSidebar from './components/StudentSideBar';
 import StudentProject from './components/StudentProject';
+import SupervisorDashboard from './components/SupervisorDashboard';
+import SupervisorProfile from './components/SupervisorProfile';
 
 const App = () => {
   return (
@@ -37,6 +39,8 @@ const App = () => {
       <Route path='/StudentDashboard' element={<StudentDashbaord/>}/>
       <Route path='/StudentSideBar' element={<StudentSidebar/>}/>
       <Route path='/StudentProject' element={<StudentProject/>}/>
+      <Route path='/SupervisorDashboard' element={<SupervisorDashboard/>}/>
+      <Route path='/SupervisorProfile' element={<SupervisorProfile/>}/>
 
 
 
