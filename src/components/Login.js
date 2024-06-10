@@ -19,6 +19,11 @@ const Login = () => {
     } else {
       alert('Invalid credentials');
     }
+    if (username === 'supervisor' && password === 'supervisor') {
+      navigate('/SupervisorDashboard'); // Update this path if necessary
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   return (
