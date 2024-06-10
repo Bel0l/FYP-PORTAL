@@ -21,6 +21,7 @@ import CreateMeeting from './components/CreateMeeting';
 import CreateTask from './components/CreateTask';
 import Meeting from './components/Meeting';
 import Tasks from './components/Tasks';
+import SupervisorProReqDetails from './components/SupervisorProReqDetails';
 
 const App = () => {
   return (
@@ -53,11 +54,7 @@ const App = () => {
       <Route path='/CreateTask' element={<CreateTask/>}/>
       <Route path='/Tasks' element={<Tasks/>}/>
       <Route path='/Meeting' element={<Meeting/>}/>
-
-
-
-
-
+      <Route path='/SupervisorProReqDetails' element={<SupervisorProReqDetails/>}/>
 
 
 
