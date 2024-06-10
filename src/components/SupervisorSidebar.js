@@ -144,7 +144,7 @@ function SupervisorSidebar() {
 
 </li>
             <li>
-              <Link to='/StudentProfile'>
+              <Link to='/SupervisorProjectsUnderMe'>
    <a href="#" className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100 group">
       <img src={projectplan} alt="" className='w-7 -ml-1' />
       <span className="ms-2">Projects Under Me</span>

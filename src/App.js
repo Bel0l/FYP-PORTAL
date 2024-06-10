@@ -16,6 +16,11 @@ import StudentProject from './components/StudentProject';
 import SupervisorDashboard from './components/SupervisorDashboard';
 import SupervisorProfile from './components/SupervisorProfile';
 import SupervisorProjectRequest from './components/SupervisorProjectRequest';
+import SupervisorProjectsUnderMe from './components/SupervisorProjectsUnderMe';
+import CreateMeeting from './components/CreateMeeting';
+import CreateTask from './components/CreateTask';
+import Meeting from './components/Meeting';
+import Tasks from './components/Tasks';
 
 const App = () => {
   return (
@@ -43,6 +48,16 @@ const App = () => {
       <Route path='/SupervisorDashboard' element={<SupervisorDashboard/>}/>
       <Route path='/SupervisorProfile' element={<SupervisorProfile/>}/>
       <Route path='/SupervisorProjectRequest' element={<SupervisorProjectRequest/>}/>
+      <Route path='/SupervisorProjectsUnderMe' element={<SupervisorProjectsUnderMe/>}/>
+      <Route path='/CreateMeeting' element={<CreateMeeting/>}/>
+      <Route path='/CreateTask' element={<CreateTask/>}/>
+      <Route path='/Tasks' element={<Tasks/>}/>
+      <Route path='/Meeting' element={<Meeting/>}/>
+
+
+
+
+
 
 
 
