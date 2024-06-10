@@ -16,6 +16,7 @@ import StudentProject from './components/StudentProject';
 import SupervisorDashboard from './components/SupervisorDashboard';
 import SupervisorProfile from './components/SupervisorProfile';
 import SupervisorProjectRequest from './components/SupervisorProjectRequest';
+import SupervisorProReqDetails from './components/SupervisorProReqDetails';
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
       <Route path='/SupervisorDashboard' element={<SupervisorDashboard/>}/>
       <Route path='/SupervisorProfile' element={<SupervisorProfile/>}/>
       <Route path='/SupervisorProjectRequest' element={<SupervisorProjectRequest/>}/>
+      <Route path='/SupervisorProReqDetails' element={<SupervisorProReqDetails/>}/>
 
 
 

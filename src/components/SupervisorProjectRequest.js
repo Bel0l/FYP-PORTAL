@@ -72,10 +72,10 @@ function SupervisorProjectRequest() {
           <thead className="">
             <tr className="header bg-blue-200">
               <th>ID</th>
-              <th>Supervisor Name</th>
-              <th>Specialization</th>
-              <th>No of Groups</th>
-              <th>Group Available</th>
+              <th>Student Names</th>
+              <th>Title</th>
+              <th>Program</th>
+              <th>Proposal</th>
               <th>Actions</th>
             </tr>
           </thead>
