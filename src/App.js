@@ -15,6 +15,7 @@ import StudentSidebar from './components/StudentSideBar';
 import StudentProject from './components/StudentProject';
 import SupervisorDashboard from './components/SupervisorDashboard';
 import SupervisorProfile from './components/SupervisorProfile';
+import SupervisorProjectRequest from './components/SupervisorProjectRequest';
 
 const App = () => {
   return (
@@ -41,7 +42,7 @@ const App = () => {
       <Route path='/StudentProject' element={<StudentProject/>}/>
       <Route path='/SupervisorDashboard' element={<SupervisorDashboard/>}/>
       <Route path='/SupervisorProfile' element={<SupervisorProfile/>}/>
-
+      <Route path='/SupervisorProjectRequest' element={<SupervisorProjectRequest/>}/>
 
 
 
