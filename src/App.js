@@ -8,7 +8,7 @@ import AdminDashboard from './components/AdminDashboard';
 import AdminDashboard1 from './components/AdminDashboard1';
 import AdminDashboardSupervisors from './components/AdminDashboardSupervisors';
 import AdminDashboardProject from './components/AdminDashboardProject';
-import Projects from './components/Projects';
+// import Projects from './components/Projects';
 import StudentProjectCreation from './components/StudentProjectCreation';
 import StudentProfile from './components/StudentProfile';
 import StudentDashbaord from './components/StudentDashboard';
@@ -45,7 +45,7 @@ const App = () => {
       <Route path='/AdminDashboard1' element={<AdminDashboard1/>}/>
       <Route path='/AdminDashboardProject' element={<AdminDashboardProject/>}/>
       <Route path='/AdminDashboardSupervisors' element={<AdminDashboardSupervisors/>}/>
-      <Route path='/Projects' element={<Projects/>}/>
+      {/* <Route path='/Projects' element={<Projects/>}/> */}
       <Route path='/StudentProjectCreation' element={<StudentProjectCreation/>}/>
       <Route path='/StudentProfile' element={<StudentProfile/>}/>
       <Route path='/StudentDashboard' element={<StudentDashbaord/>}/>

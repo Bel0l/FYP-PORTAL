@@ -7,8 +7,8 @@ function Projects() {
 
   useEffect(() => {
     fetch("https://randomuser.me/api/?results=6")
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const users = data.results.map((user, index) => ({
           id: index + 1,
           projectName: user.name.first + "'s Project",
@@ -27,8 +27,8 @@ function Projects() {
         <Sidebar />
       </div>
 
-      <div className='container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 '>
-        <span className='font-bold'>Department Name: </span>
+      <div className="container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 ">
+        <span className="font-bold">Department Name: </span>
         <span>Computer Science and IT</span>
       </div>
 
@@ -36,9 +36,11 @@ function Projects() {
         <span className="font-semibold ml-5">Admin Portal</span>
         <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
-            <li className="flex-1 ml-8 mt-2">Students</li>
-            <li className="flex-1 mt-2 cursor-pointer">Supervisors</li>
-            <Link to='/Projects' className="flex-1 mt-2 cursor-pointer">Projects</Link>
+            <Link to='/AdminDashboard1' className="flex-1 ml-8 mt-2">Students</Link>
+            <Link to='/AdminDashboardSupervisors' className="flex-1 mt-2 cursor-pointer">Supervisors</Link>
+            <Link to="/AdminDashboardProject" className="flex-1 mt-2 cursor-pointer">
+              Projects
+            </Link>
           </ul>
         </div>
         {/* SearchBar */}
@@ -83,7 +85,10 @@ function Projects() {
           </thead>
           <tbody className="">
             {data.map((user, index) => (
-              <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
+              <tr
+                key={index}
+                className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}
+              >
                 <td>{user.id}</td>
                 <td>{user.projectName}</td>
                 <td>{user.noOfStudents}</td>
