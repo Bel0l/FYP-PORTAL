@@ -7,6 +7,7 @@ import WelcomeAdmin from './components/WelcomeAdmin';
 import AdminDashboard from './components/AdminDashboard';
 import AdminDashboard1 from './components/AdminDashboard1';
 import AdminDashboardSupervisors from './components/AdminDashboardSupervisors';
+import AdminDashboardProject from './components/AdminDashboardProject';
 import Projects from './components/Projects';
 import StudentProjectCreation from './components/StudentProjectCreation';
 import StudentProfile from './components/StudentProfile';
@@ -25,6 +26,7 @@ import SupervisorProReqDetails from './components/SupervisorProReqDetails';
 import StudentTasks from './components/StudentTasks';
 import StudentMeeting from './components/StudentMeeting';
 
+
 const App = () => {
   return (
     <Router>
@@ -41,6 +43,7 @@ const App = () => {
         <Route path='/WelcomeAdmin' element={<WelcomeAdmin/>}/>
       <Route path='/AdminDashboard' element={<AdminDashboard/>}/>
       <Route path='/AdminDashboard1' element={<AdminDashboard1/>}/>
+      <Route path='/AdminDashboardProject' element={<AdminDashboardProject/>}/>
       <Route path='/AdminDashboardSupervisors' element={<AdminDashboardSupervisors/>}/>
       <Route path='/Projects' element={<Projects/>}/>
       <Route path='/StudentProjectCreation' element={<StudentProjectCreation/>}/>

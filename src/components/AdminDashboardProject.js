@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
-function AdminDashboardSupervisors() {
+function Projects() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -11,10 +11,11 @@ function AdminDashboardSupervisors() {
       .then(data => {
         const users = data.results.map((user, index) => ({
           id: index + 1,
-          supervisorName: user.name.first + " " + user.name.last,
-          specialization: user.location.city,
-          noOfGroups: Math.floor(Math.random() * 10) + 1, // Random number of groups
-          groupAvailable: Math.random() > 0.5 ? "Yes" : "No", // Random yes/no for group available
+          projectName: user.name.first + "'s Project",
+          noOfStudents: Math.floor(Math.random() * 5) + 1, // Random number of students
+          supervisor: user.name.first + " " + user.name.last,
+          projectArea: user.location.city,
+          progress: Math.floor(Math.random() * 100) + "%", // Random progress percentage
         }));
         setData(users);
       });
@@ -31,17 +32,17 @@ function AdminDashboardSupervisors() {
         <span>Computer Science and IT</span>
       </div>
 
-      <div className=" w-[950px] ml-[285px] h-96 mt-5  mb-10 rounded-lg bg-gray-100 ">
+      <div className="w-[950px] ml-[285px] h-96 mt-5 mb-10 rounded-lg bg-gray-100">
         <span className="font-semibold ml-5">Admin Portal</span>
-        <div className="submenue rounded-full w-3/4 ml-6  mt-2 border-blue-300 border-2 h-12 ">
+        <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
-            <Link to='' className="flex-1 ml-8 mt-2">Students</Link>
-            <Link to='AdminDashboardSupervisor' className="flex-1 mt-2 cursor-pointer ">Supervisors</Link>
-            <Link to='/Projects' className="flex-1 mt-2  cursor-pointer">Projects</Link>
+            <li className="flex-1 ml-8 mt-2">Students</li>
+            <li className="flex-1 mt-2 cursor-pointer">Supervisors</li>
+            <Link to='/Projects' className="flex-1 mt-2 cursor-pointer">Projects</Link>
           </ul>
         </div>
         {/* SearchBar */}
-        <div className="search mx-1 my-1  ">
+        <div className="search mx-1 my-1">
           <div className="relative flex w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
             <input
               className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 pl-10"
@@ -71,11 +72,12 @@ function AdminDashboardSupervisors() {
         <table className="table-auto w-full">
           <thead className="">
             <tr className="header bg-blue-200">
-              <th>ID</th>
-              <th>Supervisor Name</th>
-              <th>Specialization</th>
-              <th>No of Groups</th>
-              <th>Group Available</th>
+              <th>Group #</th>
+              <th>Project Name</th>
+              <th>No of Students</th>
+              <th>Supervisor</th>
+              <th>Project Area</th>
+              <th>Progress</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -83,16 +85,17 @@ function AdminDashboardSupervisors() {
             {data.map((user, index) => (
               <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
                 <td>{user.id}</td>
-                <td>{user.supervisorName}</td>
-                <td>{user.specialization}</td>
-                <td>{user.noOfGroups}</td>
-                <td>{user.groupAvailable}</td>
+                <td>{user.projectName}</td>
+                <td>{user.noOfStudents}</td>
+                <td>{user.supervisor}</td>
+                <td>{user.projectArea}</td>
+                <td>{user.progress}</td>
                 <td>
                   <div className="flex">
-                    <button className="rounded px-5 py-1 text-xs bg-green-500 text-white hover:bg-green-600 duration-300">
+                    <button className="rounded px-4 py-1 text-xs bg-green-500 text-white hover:bg-green-600 duration-300">
                       Edit
                     </button>
-                    <button className="rounded mx-2 px-2 py-1 text-xs bg-red-500  text-white hover:bg-red-600  duration-300">
+                    <button className="rounded mx-2 px-2 py-1 text-xs bg-red-500 text-white hover:bg-red-600 duration-300">
                       REMOVE
                     </button>
                   </div>
@@ -106,4 +109,4 @@ function AdminDashboardSupervisors() {
   );
 }
 
-export default AdminDashboardSupervisors;
+export default Projects;
