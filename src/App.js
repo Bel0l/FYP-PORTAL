@@ -22,6 +22,8 @@ import CreateTask from './components/CreateTask';
 import Meeting from './components/Meeting';
 import Tasks from './components/Tasks';
 import SupervisorProReqDetails from './components/SupervisorProReqDetails';
+import StudentTasks from './components/StudentTasks';
+import StudentMeeting from './components/StudentMeeting';
 
 const App = () => {
   return (
@@ -55,6 +57,9 @@ const App = () => {
       <Route path='/Tasks' element={<Tasks/>}/>
       <Route path='/Meeting' element={<Meeting/>}/>
       <Route path='/SupervisorProReqDetails' element={<SupervisorProReqDetails/>}/>
+      <Route path='/StudentTasks' element={<StudentTasks/>}/>
+      <Route path='/StudentMeeting' element={<StudentMeeting/>}/>
+
 
 
 

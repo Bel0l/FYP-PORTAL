@@ -19,14 +19,14 @@ const StudentProjectCreation = () => {
 
 </div>
             <div className=' w-[930px] ml-72 mt-5 h-96 mb-36 rounded-lg bg-gray-100 '>
-                <span className='font-semibold ml-5'>FYP Portal</span>
-                <div className='submenue rounded-full ml-6  mt-2 border-blue-300 border-2 h-12 w-96'>
+                <span className='font-semibold ml-5'>Student Portal</span>
+                {/* <div className='submenue rounded-full ml-6  mt-2 border-blue-300 border-2 h-12 w-96'>
                     <ul className='flex'>
                         <li className='flex-1 ml-8 mt-2'>My Profile</li>
                         <li className='flex-1 mt-2 cursor-pointer '>Create Project</li>
                         <Link to='/Tasks' className='flex-1 mt-2  '>Tasks</Link>
                     </ul>
-                </div>
+                </div> */}
 
                 <div className='bg-purple-300 h-10 w-5/3  mt-3 rounded-lg'>
                     <span className='ml-4 font-bold'>Project Creation Form</span>
