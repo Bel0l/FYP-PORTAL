@@ -51,16 +51,16 @@ function SupervisorProjectsUnderMe() {
       </div>
 
       <div className="w-[950px] ml-[285px] h-96 mt-5 mb-10 rounded-lg bg-gray-100">
-        <span className="font-semibold ml-5">Supervisor Portal</span>
-        <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
+        <span className="font-semibold ml-5 ">Accepted Projects</span>
+        {/* <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
             <li className="flex-1 ml-8 mt-2">Students</li>
             <li className="flex-1 mt-2 cursor-pointer">Supervisors</li>
             <Link to='/Projects' className="flex-1 mt-2 cursor-pointer">Projects</Link>
           </ul>
-        </div>
+        </div> */}
         {/* SearchBar */}
-        <div className="search mx-1 my-1">
+        {/* <div className="search mx-1 my-1">
           <div className="relative flex w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
             <input
               className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 pl-10"
@@ -85,9 +85,9 @@ function SupervisorProjectsUnderMe() {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <table className="table-auto w-full">
+        <table className="table-auto w-full mt-8">
           <thead className="">
             <tr className="header bg-blue-200">
               <th>S/NO</th>

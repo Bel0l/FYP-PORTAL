@@ -41,7 +41,7 @@ function SupervisorProjectRequest() {
           </ul>
         </div> */}
         {/* SearchBar */}
-        <div className="search mx-1 my-1  ">
+        {/* <div className="search mx-1 my-1  ">
           <div className="relative flex w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
             <input
               className="peer h-full w-full outline-none text-sm text-gray-700 pr-2 pl-10"
@@ -66,9 +66,9 @@ function SupervisorProjectRequest() {
               </svg>
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <table className="table-auto w-full">
+        <table className="table-auto w-full mt-8">
           <thead className="">
             <tr className="header bg-blue-200">
               <th>ID</th>
