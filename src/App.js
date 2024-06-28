@@ -15,6 +15,7 @@ import StudentDashbaord from './components/StudentDashboard';
 import StudentSidebar from './components/StudentSideBar';
 import StudentProject from './components/StudentProject';
 import SupervisorDashboard from './components/SupervisorDashboard';
+import SupervisorEditProfile from './components/SupervisorEditProfile';
 import SupervisorProfile from './components/SupervisorProfile';
 import SupervisorProjectRequest from './components/SupervisorProjectRequest';
 import SupervisorProjectsUnderMe from './components/SupervisorProjectsUnderMe';
@@ -52,6 +53,7 @@ const App = () => {
       <Route path='/StudentSideBar' element={<StudentSidebar/>}/>
       <Route path='/StudentProject' element={<StudentProject/>}/>
       <Route path='/SupervisorDashboard' element={<SupervisorDashboard/>}/>
+      <Route path='/SupervisorEditProfile' element={<SupervisorEditProfile/>}/>
       <Route path='/SupervisorProfile' element={<SupervisorProfile/>}/>
       <Route path='/SupervisorProjectRequest' element={<SupervisorProjectRequest/>}/>
       <Route path='/SupervisorProjectsUnderMe' element={<SupervisorProjectsUnderMe/>}/>

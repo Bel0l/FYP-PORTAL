@@ -62,6 +62,16 @@ const CreateMeeting = () => {
               <label htmlFor="date" className="block text-sm font-semibold text-gray-700 mb-1">Date:</label>
               <input type="text" id="date" name="date" placeholder='Enter Date' className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
             </div>
+            <div className="ml-72">
+                  <Link to="">
+                    <button
+                      type="button"
+                      className="text-white bg-purple-800 hover:bg-purple-600 focus:ring-4 focus:ring-purple-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 "
+                    >
+                      Done
+                    </button>
+                  </Link>
+                </div>
           </div>
         </form>
       </div>

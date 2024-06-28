@@ -43,20 +43,35 @@ const CreateTask = () => {
       <div className="flex justify-center mt-4 mb-10">
         <form className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
           <div className="grid grid-cols-1 gap-y-6">
+          <div>
+              <label htmlFor="meetingType" className="block text-sm font-semibold text-gray-700 mb-1">Project Name:</label>
+              <input type="text" id="meetingType" placeholder='Enter Project Name' name="projectName" className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
+            </div>
             <div>
               <label htmlFor="meetingType" className="block text-sm font-semibold text-gray-700 mb-1">Title:</label>
-              <input type="text" id="meetingType" placeholder='Enter Meeting Type' name="meetingType" className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
+              <input type="text" id="meetingType" placeholder='Enter Task Title' name="taskTitle" className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
             </div>
 
             <div>
               <label htmlFor="time" className="block text-sm font-semibold text-gray-700 mb-1">Assigned to:</label>
-              <textarea id="time" name="time" rows="1" placeholder='Enter Time' className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1"></textarea>
+              <textarea id="time" name="time" rows="1" placeholder='Enter Name' className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1"></textarea>
             </div>
 
             <div>
               <label htmlFor="location" className="block text-sm font-semibold text-gray-700 mb-1">Due date:</label>
-              <input type="text" id="location" name="location" placeholder='Enter Location' className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
+              <input type="text" id="location" name="location" placeholder='Enter Date' className="focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md py-1" />
             </div>
+
+            <div className="ml-72">
+                  <Link to="">
+                    <button
+                      type="button"
+                      className="text-white bg-purple-800 hover:bg-purple-600 focus:ring-4 focus:ring-purple-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 "
+                    >
+                      Done
+                    </button>
+                  </Link>
+                </div>
 
            
           </div>

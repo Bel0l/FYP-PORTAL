@@ -82,7 +82,9 @@ function SupervisorProjectRequest() {
           <tbody className="">
             {data.map((user, index) => (
               <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
+                <Link to='./SupervisorProReqDetails'>
                 <td>{user.id}</td>
+                </Link>
                 <td>{user.supervisorName}</td>
                 <td>{user.specialization}</td>
                 <td>{user.noOfGroups}</td>
