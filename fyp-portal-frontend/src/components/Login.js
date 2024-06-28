@@ -1,35 +1,42 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Logo from '../assets/logo.png';
+import axios from 'axios';
+import logo from '../assets/logo.png'
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'admin') {
-      navigate('/AdminDashboard'); // Update this path if necessary
-    } else {
-      alert('Invalid credentials');
+
+    if (!username || !password || !role) {
+      alert('Please enter username, password, and select a role.');
+      return;
     }
-    if (username === 'student' && password === 'student') {
-      navigate('/StudentDashboard'); // Update this path if necessary
-    } else {
-      alert('Invalid credentials');
-    }
-    if (username === 'supervisor' && password === 'supervisor') {
-      navigate('/SupervisorDashboard'); // Update this path if necessary
-    } else {
-      alert('Invalid credentials');
+
+    try {
+      const response = await axios.post('http://localhost:3000/api/auth/login', {
+        username,
+        password,
+        role,
+      });
+
+      const { token } = response.data;
+      localStorage.setItem('token', token);
+      navigate(`/${role}Dashboard`);
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Invalid credentials or unauthorized');
     }
   };
 
   return (
     <div>
       <div className="w-80 h-full fixed top-0 left-0 bg-[#6532A5]">
-        <img src={Logo} alt="Logo" className="w-auto h-auto my-36 opacity-65" />
+        <img src={logo} alt="Logo" className="w-auto h-auto my-36 opacity-65" />
       </div>
 
       <div className='flex justify-center items-center'>
@@ -66,12 +73,14 @@ const Login = () => {
                 <label htmlFor="SelectRole" className="text-sm font-bold">Select Role:</label>
                 <select
                   id="SelectRole"
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
                   className="ring-1 ring-gray-300 w-full rounded-md px-2 py-1 mt-1 mb-2 outline-none focus:ring-2 focus:ring-purple-500"
                 >
-                  <option value="" disabled selected>Select a role</option>
+                  <option value="" disabled>Select a role</option>
                   <option value="admin">Admin</option>
-                  <option value="user">Supervisor</option>
-                  <option value="manager">Student</option>
+                  <option value="supervisor">Supervisor</option>
+                  <option value="student">Student</option>
                 </select>
               </div>
               <button
