@@ -95,8 +95,18 @@ const StudentProjectCreation = () => {
                                     <label htmlFor="projectType" className="block text-sm font-semibold text-gray-700 mr-2">Project Type:</label>
                                     <select id="projectType" name="projectType" className="mt-1 focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md" value={formData.projectType} onChange={handleChange}>
                                         <option value="">Select</option>
-                                        <option value="AI">AI</option>
-                                        <option value="Flutter">Flutter</option>
+                                        <option value="AI">Machine Learning Projects</option>
+                                        <option value="Security Projects">Security Projects</option>
+                                        <option value="Networking ProjectsFlutter">Networking Projects</option>
+                                        <option value="Web Development Projects">Web Development Projects</option>
+                                        <option value="Mobile App Development Projects">Mobile App Development Projects</option>
+                                        <option value="Game Development Projects">Game Development Projects</option>
+                                        <option value="Human-Computer Interaction">Human-Computer Interaction</option>
+                                        <option value="Bioinformatics Projects">Bioinformatics Projects</option>
+                                        <option value="Embedded Systems Projects">Embedded Systems Projects</option>
+                                        <option value="Cloud Computing Projects">Cloud Computing Projects</option>
+                                    
+
                                     </select>
                                 </div>
                                 <div className="mb-4 flex items-center">
@@ -106,9 +116,9 @@ const StudentProjectCreation = () => {
                                 <div className="mb-4 flex items-center">
                                     <label htmlFor="program" className="block text-sm font-semibold text-gray-700 mr-4">Program:</label>
                                     <select id="program" name="program" className="mt-1 focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md" value={formData.program} onChange={handleChange}>
-                                        <option value="">Select</option>
-                                        <option value="Program 1">Program 1</option>
-                                        <option value="Program 2">Program 2</option>
+                                        <option value="Bcs">Bcs</option>
+                                        <option value="Msc">Msc</option>
+                                        <option value="Phd">Phd</option>
                                     </select>
                                 </div>
                                 <div className="mb-4 flex items-center">

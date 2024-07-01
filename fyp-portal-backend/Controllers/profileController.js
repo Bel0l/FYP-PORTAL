@@ -4,10 +4,10 @@ exports.getProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user._id);
 
-    console.log("user ID ...", user);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+
     res.json({ user: user.profile });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -28,7 +28,7 @@ exports.updateProfile = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    res.json({ message: 'Profile updated successfully', user });
+    res.json({ message: 'Profile updated successfully', user: user.profile });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });

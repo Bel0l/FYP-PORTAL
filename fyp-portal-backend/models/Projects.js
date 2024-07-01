@@ -10,8 +10,7 @@ const ProjectSchema = new mongoose.Schema({
     required: true
   },
   proposal: {
-    type: String,
-    required: true
+    type: String
   },
   projectType: {
     type: String,

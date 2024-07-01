@@ -37,7 +37,7 @@ const Meeting = () => {
         </div>
 
         <div className='bg-purple-300 h-10 w-5/3 mt-3 rounded-lg'>
-          <span className='ml-4 font-bold'>Meeting Creation Form</span>
+          <span className='ml-4 font-bold'>Meeting </span>
         </div>
 
         <div className='grid grid-cols-3 gap-4 p-4'>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import SupervisorSidebar from './SupervisorSidebar';
+import { Link } from "react-router-dom";
 
 function SupervisorProjectRequest() {
   const [requests, setRequests] = useState([]);
@@ -85,6 +86,7 @@ function SupervisorProjectRequest() {
           <span className="font-semibold ml-5">Supervisor Portal</span>
           <table className="table-auto w-full mt-8">
             <thead>
+              
               <tr className="header bg-blue-200">
                 <th>ID</th>
                 <th>Student Names</th>
@@ -98,7 +100,9 @@ function SupervisorProjectRequest() {
               {requests.map((request, index) => (
               
                 <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
+                  <Link to="../SupervisorProReqDetails">
                   <td>{request._id}</td>
+                  </Link>
                   <td>{request.student._id}</td>
                   <td>{request.projectTitle}</td>
                   <td>{request.program}</td>

@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../assets/logo.png'
+import { useAuth } from '../context/AuthContext';
+import logo from '../assets/logo.png';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(null);
 
     if (!username || !password || !role) {
-      alert('Please enter username, password, and select a role.');
+      setError('Please enter username, password, and select a role.');
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await axios.post('http://localhost:3000/api/auth/login', {
@@ -26,10 +33,23 @@ const Login = () => {
 
       const { token } = response.data;
       localStorage.setItem('token', token);
-      navigate(`/${role}Dashboard`);
+
+      // Set the user data in the context
+      await login({ username, role });
+
+      // Navigate to the appropriate dashboard
+      if (role.toLowerCase() === 'admin') {
+        navigate('/AdminDashboard');
+      } else if (role.toLowerCase() === 'supervisor') {
+        navigate('/SupervisorDashboard');
+      } else if (role.toLowerCase() === 'student') {
+        navigate('/StudentDashboard');
+      }
     } catch (error) {
       console.error('Login error:', error);
-      alert('Invalid credentials or unauthorized');
+      setError('Invalid credentials or unauthorized');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -45,6 +65,8 @@ const Login = () => {
             <h2 className='text-3xl font-bold font-sans'>Welcome to FYP Portal</h2>
             <h4 className='text-gray-500 mt-2'>Final Year Project Management System</h4>
             <p className='font-bold text-gray-700 font-sans text-sm mt-8'>Login your account</p>
+
+            {error && <p className="text-red-500 mt-2">{error}</p>}
 
             <div className="mt-2 space-y-2">
               <div>
@@ -86,8 +108,9 @@ const Login = () => {
               <button
                 type="submit"
                 className="bg-[#6532A5] text-white p-2 px-3 rounded-md font-semibold"
+                disabled={loading}
               >
-                Login
+                {loading ? 'Logging in...' : 'Login'}
               </button>
             </div>
           </form>

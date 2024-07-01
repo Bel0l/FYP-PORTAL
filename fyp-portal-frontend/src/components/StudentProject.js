@@ -22,11 +22,18 @@ function StudentProject() {
           Authorization: `Bearer ${token}`
         }
       });
-       console.log(response.data);
-      setData(response.data); // Assuming your API returns projects in the structure { projects: [...] }
+
+      console.log('API Response:', response.data); // Log the response to inspect its structure
+
+      // Check if response.data is an array (assuming it directly returns an array)
+      if (Array.isArray(response.data)) {
+        setData(response.data);
+      } else {
+        throw new Error('Unexpected API response structure: projects array not found');
+      }
     } catch (error) {
       console.error('Error fetching projects:', error.response?.data || error.message);
-      // Handle unauthorized error, redirect to login or show error message
+      // Handle errors, e.g., redirect to login page on unauthorized
       // Example: redirect to login if token is expired
       // if (error.response?.status === 401) {
       //   history.push('/login'); // Assuming you have a login route
@@ -68,7 +75,7 @@ function StudentProject() {
               <th>Project Type</th>
               <th>Group Members</th>
               <th>Degree Type</th>
-              <th>status</th>
+              <th>Status</th>
             </tr>
           </thead>
           <tbody className="">

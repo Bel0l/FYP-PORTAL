@@ -19,6 +19,7 @@ router.post('/register', async (req, res) => {
 });
 
 // Login route
+
 router.post('/login', async (req, res) => {
   const { username, password, role } = req.body;
 
@@ -33,12 +34,47 @@ router.post('/login', async (req, res) => {
       return res.status(403).json({ message: 'Role does not match' });
     }
 
+    // Generate JWT token with user id and role
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+    // Return token as JSON response
     res.json({ token });
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    res.status(500).json({ message: 'Server error' }); // Handle other errors as 500 Internal Server Error
   }
 });
+router.post('/verify', async (req, res) => {
+  const { token } = req.body;
+
+  if (!token) {
+    return res.status(401).json({ message: 'No token provided' });
+  }
+
+  try {
+    // Verify token
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Fetch user details based on decoded token
+    const user = await User.findById(decoded.id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Token is valid, return user details
+    res.json({ user });
+  } catch (error) {
+    // Token verification failed
+    console.error('Token verification failed:', error);
+    if (error.name === 'JsonWebTokenError') {
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+    if (error.name === 'TokenExpiredError') {
+      return res.status(401).json({ message: 'Token expired' });
+    }
+    res.status(500).json({ message: 'Token verification failed' });
+  }
+});
+
 router.get('/profile', protect, getProfile);
 router.put('/profile', protect, authorize('student','supervisor'), updateProfile);
 

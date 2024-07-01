@@ -1,25 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
-function Projects() {
-  const [data, setData] = useState([]);
+const Projects = () => {
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://randomuser.me/api/?results=6")
-      .then((response) => response.json())
-      .then((data) => {
-        const users = data.results.map((user, index) => ({
-          id: index + 1,
-          projectName: user.name.first + "'s Project",
-          noOfStudents: Math.floor(Math.random() * 5) + 1, // Random number of students
-          supervisor: user.name.first + " " + user.name.last,
-          projectArea: user.location.city,
-          progress: Math.floor(Math.random() * 100) + "%", // Random progress percentage
-        }));
-        setData(users);
-      });
+    const fetchProjects = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/admin/projects');
+        setProjects(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      }
+    };
+
+    fetchProjects();
   }, []);
+
+  const handleEdit = (id) => {
+    try {
+      navigate(`/AdminProjectEdit/${id}`);
+    } catch (error) {
+      console.error('Error navigating to project edit:', error);
+    }
+  };
+
+  const handleRemove = async (id) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/admin/projects/${id}`);
+      setProjects(projects.filter(project => project._id !== id));
+    } catch (error) {
+      console.error('Error deleting project:', error);
+    }
+  };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
@@ -27,7 +50,7 @@ function Projects() {
         <Sidebar />
       </div>
 
-      <div className="container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 ">
+      <div className="container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16">
         <span className="font-bold">Department Name: </span>
         <span>Computer Science and IT</span>
       </div>
@@ -38,9 +61,7 @@ function Projects() {
           <ul className="flex">
             <Link to='/AdminDashboard1' className="flex-1 ml-8 mt-2">Students</Link>
             <Link to='/AdminDashboardSupervisors' className="flex-1 mt-2 cursor-pointer">Supervisors</Link>
-            <Link to="/AdminDashboardProject" className="flex-1 mt-2 cursor-pointer">
-              Projects
-            </Link>
+            <Link to="/AdminDashboardProject" className="flex-1 mt-2 cursor-pointer">Projects</Link>
           </ul>
         </div>
         {/* SearchBar */}
@@ -84,25 +105,18 @@ function Projects() {
             </tr>
           </thead>
           <tbody className="">
-            {data.map((user, index) => (
-              <tr
-                key={index}
-                className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}
-              >
-                <td>{user.id}</td>
-                <td>{user.projectName}</td>
-                <td>{user.noOfStudents}</td>
-                <td>{user.supervisor}</td>
-                <td>{user.projectArea}</td>
-                <td>{user.progress}</td>
+            {projects.map((project, index) => (
+              <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
+                <td>{index + 1}</td>
+                <td>{project.projectTitle}</td>
+                <td>{project.groupMembers.length}</td>
+                <td>{project.supervisor?.profile?.fullName || 'N/A'}</td>
+                <td>{project.projectType}</td>
+                <td>{project.status}</td>
                 <td>
                   <div className="flex">
-                    <button className="rounded px-4 py-1 text-xs bg-green-500 text-white hover:bg-green-600 duration-300">
-                      Edit
-                    </button>
-                    <button className="rounded mx-2 px-2 py-1 text-xs bg-red-500 text-white hover:bg-red-600 duration-300">
-                      REMOVE
-                    </button>
+                    <button onClick={() => handleEdit(project._id)} className="rounded px-4 py-1 text-xs bg-green-500 text-white hover:bg-green-600 duration-300">Edit</button>
+                    <button onClick={() => handleRemove(project._id)} className="rounded mx-2 px-2 py-1 text-xs bg-red-500 text-white hover:bg-red-600 duration-300">REMOVE</button>
                   </div>
                 </td>
               </tr>

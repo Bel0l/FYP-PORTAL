@@ -50,7 +50,7 @@ router.get('/requests', protect, authorize('supervisor',"student"), async (req, 
 // Supervisor accepts a project
 router.put('/requests/:projectId/accept', protect, authorize('supervisor'), async (req, res) => {
   try {
-    const project = await Project.findById(req.params.projectId);
+    const project = await Project.find(req.params.projectId).populate('supervisor','supervisor.fullName');
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
