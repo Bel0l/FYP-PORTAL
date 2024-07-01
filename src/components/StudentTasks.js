@@ -24,14 +24,14 @@ const Tasks = () => {
             {/* <Link to='/CreateTask'>
               <li className="flex-1 mt-2 ml-5 cursor-pointer">Create Tasks</li>
             </Link> */}
-            <Link to='/Tasks'>
+            <Link to='/StudentTasks'>
             <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
             </Link>
             <Link to='/StudentMeeting'>
               <li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li>
             </Link>
             
-            <Link to='/Chat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
+            <Link to='/StudentChat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
           </ul>
         </div>
 

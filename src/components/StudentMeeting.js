@@ -32,7 +32,7 @@ const Meeting = () => {
               <li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li>
             </Link>
             
-            <Link to='/Chat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
+            <Link to='/StudentChat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
           </ul>
         </div>
 

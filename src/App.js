@@ -23,9 +23,12 @@ import CreateMeeting from './components/CreateMeeting';
 import CreateTask from './components/CreateTask';
 import Meeting from './components/Meeting';
 import Tasks from './components/Tasks';
+import Chat from './components/Chat';
 import SupervisorProReqDetails from './components/SupervisorProReqDetails';
 import StudentTasks from './components/StudentTasks';
 import StudentMeeting from './components/StudentMeeting';
+import StudentChat from './components/StudentChat';
+
 
 
 const App = () => {
@@ -35,12 +38,7 @@ const App = () => {
         {/*login page the landing page */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/home" element={
-          <div>
-            {/* <h2>Home</h2>
-            <p>Welcome to the home page.</p> */}
-          </div>
-        } />
+        
         <Route path='/WelcomeAdmin' element={<WelcomeAdmin/>}/>
       <Route path='/AdminDashboard' element={<AdminDashboard/>}/>
       <Route path='/AdminDashboard1' element={<AdminDashboard1/>}/>
@@ -61,9 +59,11 @@ const App = () => {
       <Route path='/CreateTask' element={<CreateTask/>}/>
       <Route path='/Tasks' element={<Tasks/>}/>
       <Route path='/Meeting' element={<Meeting/>}/>
+      <Route path='/Chat' element={<Chat/>}/>
       <Route path='/SupervisorProReqDetails' element={<SupervisorProReqDetails/>}/>
       <Route path='/StudentTasks' element={<StudentTasks/>}/>
       <Route path='/StudentMeeting' element={<StudentMeeting/>}/>
+      <Route path='/StudentChat' element={<StudentChat/>}/>
 
 
 
