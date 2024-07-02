@@ -46,7 +46,7 @@ function AdminDashboardStudent() {
         <span className="font-semibold ml-5">Admin Portal</span>
         <div className="submenue rounded-full w-3/4 ml-6  mt-2 border-blue-300 border-2 h-12 ">
           <ul className="flex">
-            <Link to='/AdminDashboard1' className="flex-1 ml-8 mt-2">Students</Link>
+            <Link to='/AdminDashboardStudent' className="flex-1 ml-8 mt-2">Students</Link>
             <Link to='/AdminDashboardSupervisors' className="flex-1 mt-2 cursor-pointer">Supervisors</Link>
             <Link to="/AdminDashboardProject" className="flex-1 mt-2 cursor-pointer">
               Projects

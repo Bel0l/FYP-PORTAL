@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-router.get('/meetings', protect, authorize('supervisor'), async (req, res) => {
+router.get('/meetings', protect, authorize('student','supervisor'), async (req, res) => {
     try {
       // Fetch all meetings from the database
       const meetings = await Meeting.find({});

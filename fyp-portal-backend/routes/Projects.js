@@ -39,10 +39,19 @@ router.post('/', protect, authorize('student'), async (req, res) => {
 });
 
 // Supervisor views all pending project requests
-router.get('/requests', protect, authorize('supervisor',"student"), async (req, res) => {
+router.get('/requests', protect, authorize('supervisor', 'student'), async (req, res) => {
   try {
-    const requests = await ProjectRequest.find();
-    res.status(200).json( requests );
+    const requests = await Project.find()
+      .populate({
+        path: 'student',
+        select: 'profile.fullName'
+      })
+      .populate({
+        path: 'supervisor',
+        select: 'profile.fullName'
+      });
+
+    res.status(200).json(requests);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -50,7 +59,7 @@ router.get('/requests', protect, authorize('supervisor',"student"), async (req, 
 // Supervisor accepts a project
 router.put('/requests/:projectId/accept', protect, authorize('supervisor'), async (req, res) => {
   try {
-    const project = await Project.find(req.params.projectId).populate('supervisor','supervisor.fullName');
+    const project = await Project.findById(req.params.projectId).populate('supervisor','supervisor.fullName');
     if (!project) {
       return res.status(404).json({ message: 'Project not found' });
     }
@@ -64,6 +73,7 @@ router.put('/requests/:projectId/accept', protect, authorize('supervisor'), asyn
     res.status(500).json({ message: error.message });
   }
 });
+
 
 
 router.put('/requests/:projectId/reject', protect, authorize('supervisor'), async (req, res) => {

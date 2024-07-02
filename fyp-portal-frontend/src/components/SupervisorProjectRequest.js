@@ -22,57 +22,57 @@ function SupervisorProjectRequest() {
           Authorization: `Bearer ${token}`
         }
       });
-       
+
       setRequests(response.data);
-       // Assuming your API returns requests in the structure { requests: [...] }
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching requests:', error.response?.data || error.message);
     }
   };
 
-  const handleAccept = async (requestId) => {
+  const handleAccept = async (projectId) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
         throw new Error('No token found');
       }
-  
-      const response = await axios.put(`http://localhost:3000/api/projects/requests/${requestId}/accept`, {}, {
+
+      const response = await axios.put(`http://localhost:3000/api/projects/requests/${projectId}/accept`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
-      
+
       console.log(response.data.message); // Log success message or handle as needed
-  
+
       // Remove the accepted project from the requests state
-      setRequests(prevRequests => prevRequests.filter(request => request._id !== requestId));
-      
-      // You can optionally fetch updated projects from another API endpoint or update your state accordingly
-  
+      setRequests(prevRequests => prevRequests.filter(request => request._id !== projectId));
+
     } catch (error) {
       console.error('Error accepting request:', error.response?.data || error.message);
     }
   };
 
-  const handleReject = async (requestId) => {
+  const handleReject = async (projectId) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) {
         throw new Error('No token found');
       }
 
-      const response = await axios.put(`http://localhost:3000/api/projects/requests/${requestId}/reject`, {}, {
+      const response = await axios.put(`http://localhost:3000/api/projects/requests/${projectId}/reject`, {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
+
       console.log(response.data.message); // Log success message or handle as needed
       fetchRequests(); // Fetch updated requests after reject
     } catch (error) {
       console.error('Error rejecting request:', error.response?.data || error.message);
     }
   };
+
   return (
     <div>
       <SupervisorSidebar />
@@ -86,10 +86,9 @@ function SupervisorProjectRequest() {
           <span className="font-semibold ml-5">Supervisor Portal</span>
           <table className="table-auto w-full mt-8">
             <thead>
-              
               <tr className="header bg-blue-200">
                 <th>ID</th>
-                <th>Student Names</th>
+                <th>Student Name</th>
                 <th>Title</th>
                 <th>Program</th>
                 <th>Proposal</th>
@@ -98,12 +97,11 @@ function SupervisorProjectRequest() {
             </thead>
             <tbody>
               {requests.map((request, index) => (
-              
                 <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
-                  <Link to="../SupervisorProReqDetails">
-                  <td>{request._id}</td>
-                  </Link>
-                  <td>{request.student._id}</td>
+                  <td>
+                    <Link to='/SupervisorProReqDetails'>{request._id}</Link>
+                  </td>
+                  <td>{request.student?.profile?.fullName || 'N/A'}</td>
                   <td>{request.projectTitle}</td>
                   <td>{request.program}</td>
                   <td>{request.proposal}</td>

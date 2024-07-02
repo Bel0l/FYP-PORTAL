@@ -1,13 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import StudentSideBar from './StudentSideBar';
-
+import axios from 'axios';
+import StudentSidebar from './StudentSideBar';
 
 const Meeting = () => {
+  const [meetings, setMeetings] = useState([]);
+
+  useEffect(() => {
+    fetchMeetings();
+  }, []);
+
+  const fetchMeetings = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        throw new Error('No token found');
+      }
+
+      const response = await axios.get('http://localhost:3000/api/meetings/meetings', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+
+      setMeetings(response.data); // Assuming your API returns meetings in the structure { meetings: [...] }
+    } catch (error) {
+      console.error('Error fetching meetings:', error.response?.data || error.message);
+    }
+  };
   return (
     <div>
       <div>
-        <StudentSideBar />
+        <StudentSidebar />
       </div>
 
       <div className='container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 '>
@@ -19,82 +43,32 @@ const Meeting = () => {
         <span className="font-semibold ml-5">Student Portal</span>
         <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
-            {/* <Link to='/CreateMeeting'>
-            <li className="flex-1 ml-8 mt-2 cursor-pointer">Create Meeting</li>
-            </Link> */}
-            {/* <Link to='/CreateTask'>
-              <li className="flex-1 mt-2 ml-5 cursor-pointer">Create Tasks</li>
-            </Link> */}
-            <Link to='/StudentTasks'>
-            <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
-            </Link>
             <Link to='/StudentMeeting'>
               <li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li>
             </Link>
-            
+            <Link to='/StudentTasks'>
+              <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
+            </Link>
             <Link to='/Chat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
           </ul>
         </div>
 
         <div className='bg-purple-300 h-10 w-5/3 mt-3 rounded-lg'>
-          <span className='ml-4 font-bold'>Meeting </span>
+          <span className='ml-4 font-bold'>Meetings</span>
         </div>
 
         <div className='grid grid-cols-3 gap-4 p-4'>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 1
-            <br />
-            Time: 10am
-            <br />
-            Location: FYP lab
-            <br />
-            Due date: 10/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 2
-            <br />
-            Time: 2pm
-            <br />
-            Location: Conference room
-            <br />
-            Due date: 12/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 3
-            <br />
-            Time: 3pm
-            <br />
-            Location: Seminar hall
-            <br />
-            Due date: 14/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 4
-            <br />
-            Time: 9am
-            <br />
-            Location: Virtual
-            <br />
-            Due date: 16/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 5
-            <br />
-            Time: 11am
-            <br />
-            Location: Office
-            <br />
-            Due date: 18/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Group Meeting 6
-            <br />
-            Time: 1pm
-            <br />
-            Location: Cafe
-            <br />
-            Due date: 20/5/24
-          </div>
+          {meetings.map((meeting, index) => (
+            <div key={index} className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
+              {meeting.meetingType}
+              <br />
+              Time: {meeting.time}
+              <br />
+              Location: {meeting.location}
+              <br />
+              Due date: {meeting.date}
+            </div>
+          ))}
         </div>
       </div>
     </div>

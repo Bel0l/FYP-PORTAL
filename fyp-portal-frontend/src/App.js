@@ -27,15 +27,22 @@ import AdminEditSupervisor from './components/AdminEditSupervisor';
 import AdminDashboardStudent from './components/AdminDashboardStudent';
 import ProtectedRoute from './ProtectedRoute';
 import { AuthProvider } from './context/AuthContext'; // Import AuthProvider
-
+import { ProjectRequestProvider } from './context/ProjectRequestContext';
 const App = () => {
   return (
     <Router>
-      <AuthProvider> {/* Wrap your entire application with AuthProvider */}
+      <AuthProvider> 
+      <ProjectRequestProvider>{/* Wrap your entire application with AuthProvider */}
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<div></div>} />
+         
+        {/* <Switch> */}
+          <Route path="/supervisor" component={SupervisorProjectRequest} />
+          {/* Other routes */}
+        {/* </Switch> */}
+    
           <Route path="/WelcomeAdmin" element={<ProtectedRoute role="admin"><WelcomeAdmin /></ProtectedRoute>} />
           <Route path="/AdminDashboard" element={<ProtectedRoute role="admin"><AdminDashboard /></ProtectedRoute>} />
           <Route path="/AdminDashboardStudent" element={<ProtectedRoute role="admin"><AdminDashboardStudent /></ProtectedRoute>} />
@@ -60,6 +67,7 @@ const App = () => {
           <Route path="/AdminProjectEdit/:id" element={<ProtectedRoute role="admin"><AdminProjectEdit /></ProtectedRoute>} />
           <Route path="/AdminEditSupervisor/:id" element={<ProtectedRoute role="admin"><AdminEditSupervisor /></ProtectedRoute>} />
         </Routes>
+        </ProjectRequestProvider>
       </AuthProvider>
     </Router>
   );

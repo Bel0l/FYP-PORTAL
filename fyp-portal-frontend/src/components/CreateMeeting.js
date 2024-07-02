@@ -52,11 +52,10 @@ const CreateMeeting = () => {
         <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
             <li className="flex-1 ml-8 mt-2 cursor-pointer">Create Meeting</li>
-            <li className="flex-1 mt-2 ml-5 cursor-pointer">Create Tasks</li>
+           <Link to ='/CreateTask'><li className="flex-1 mt-2 ml-5 cursor-pointer">Create Tasks</li></Link> 
             <Link to='/Meeting'><li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li></Link>
-            <li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li>
-            <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
-            <li className="flex-1 mt-2 ml-8 cursor-pointer">Chat</li>
+            <Link to="/Tasks"><li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li></Link>
+            <Link to="/Chat"><li className="flex-1 mt-2 ml-8 cursor-pointer">Chat</li></Link>
           </ul>
         </div>
 

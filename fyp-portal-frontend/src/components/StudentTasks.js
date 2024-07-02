@@ -1,12 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import StudentSideBar from './StudentSideBar';
+import StudentSidebar from './StudentSideBar';
+import axios from 'axios';
 
 const Tasks = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          throw new Error('No token found');
+        }
+        const response = await axios.get('http://localhost:3000/api/tasks',{
+          headers:{
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setTasks(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
+
+    fetchTasks();
+  }, []);
+console.log(tasks);
   return (
     <div>
       <div>
-        <StudentSideBar />
+        <StudentSidebar />
       </div>
 
       <div className='container flex ml-72 mr-12 items-center justify-center w-auto h-16 bg-gray-100 mt-16 '>
@@ -18,19 +43,13 @@ const Tasks = () => {
         <span className="font-semibold ml-5">Student Portal</span>
         <div className="submenue rounded-full w-3/4 ml-6 mt-2 border-blue-300 border-2 h-12">
           <ul className="flex">
-            {/* <Link to='/CreateMeeting'>
-            <li className="flex-1 ml-8 mt-2 cursor-pointer">Create Meeting</li>
-            </Link> */}
-            {/* <Link to='/CreateTask'>
-              <li className="flex-1 mt-2 ml-5 cursor-pointer">Create Tasks</li>
-            </Link> */}
-            <Link to='/StudentTasks'>
-            <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
-            </Link>
+           
             <Link to='/StudentMeeting'>
               <li className="flex-1 mt-2 ml-8 cursor-pointer">Meeting</li>
             </Link>
-            
+            <Link to='/StudentTasks'>
+              <li className="flex-1 mt-2 ml-8 cursor-pointer">Tasks</li>
+            </Link>
             <Link to='/Chat' className="flex-1 mt-2 ml-8 cursor-pointer">Chat</Link>
           </ul>
         </div>
@@ -40,60 +59,17 @@ const Tasks = () => {
         </div>
 
         <div className='grid grid-cols-3 gap-4 p-4'>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #1
-            <br />
-            Title: Requirements analysis
-            <br />
-            Assigned to: Aqib
-            <br />
-            Due date: 10/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #2
-            <br />
-            Title: Another analysis
-            <br />
-            Assigned to: John
-            <br />
-            Due date: 12/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #3
-            <br />
-            Title: Task Three
-            <br />
-            Assigned to: Sarah
-            <br />
-            Due date: 14/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #4
-            <br />
-            Title: Fourth Task
-            <br />
-            Assigned to: Michael
-            <br />
-            Due date: 16/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #5
-            <br />
-            Title: Task Five
-            <br />
-            Assigned to: Emily
-            <br />
-            Due date: 18/5/24
-          </div>
-          <div className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
-            Task #6
-            <br />
-            Title: Sixth Task
-            <br />
-            Assigned to: Ryan
-            <br />
-            Due date: 20/5/24
-          </div>
+          {tasks.map((task, index) => (
+            <div key={index} className='text-sm bg-gray-200 p-4 rounded' style={{ marginTop: '3px' }}>
+              Task #{index + 1}
+              <br />
+              Title: {task.title}
+              <br />
+              Assigned to: {task.assignedTo}
+              <br />
+              Due date: {task.dueDate}
+            </div>
+          ))}
         </div>
       </div>
     </div>
