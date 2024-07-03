@@ -83,7 +83,7 @@ function StudentProject() {
               <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
                 <td>{index + 1}</td>
                 <td>{project.projectTitle}</td>
-                <td>{project.supervisor}</td>
+                <td>{project.supervisor?.profile?.fullName || 'N/A'}</td>
                 <td>{project.projectType}</td>
                 <td>{project.groupMembers.join(", ")}</td>
                 <td>{project.program}</td>
