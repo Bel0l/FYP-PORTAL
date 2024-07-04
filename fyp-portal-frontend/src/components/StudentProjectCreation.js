@@ -9,21 +9,23 @@ const StudentProjectCreation = () => {
         description: '',
         proposal: '',
         projectType: '',
-        supervisor: '', // Store supervisor ID here
+        supervisor: '',
         program: '',
         groupMembers: ''
     });
 
     const [supervisors, setSupervisors] = useState([]);
-    const[data, setData] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Fetch supervisors data from backend
         const fetchSupervisors = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/api/supervisor');
-                setSupervisors(response.data.supervisors); // Assuming response data structure has supervisors array
+                const response = await axios.get('http://localhost:3000/api/supervisors', {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+                setSupervisors(response.data); // Assuming response data structure is an array of supervisors
             } catch (error) {
                 console.error('Error fetching supervisors:', error.response?.data || error.message);
             }
@@ -49,14 +51,11 @@ const StudentProjectCreation = () => {
                 }
             });
             console.log('Project created successfully:', response.data);
-            // Add the newly created project to the data state in StudentProject
-            setData([...data, response.data.project]);
             navigate('/StudentProject'); // Redirect to projects page or show success message
         } catch (error) {
             console.error('Error creating project:', error.response?.data || error.message);
         }
     };
-    
 
     return (
         <div>
@@ -105,13 +104,18 @@ const StudentProjectCreation = () => {
                                         <option value="Bioinformatics Projects">Bioinformatics Projects</option>
                                         <option value="Embedded Systems Projects">Embedded Systems Projects</option>
                                         <option value="Cloud Computing Projects">Cloud Computing Projects</option>
-                                    
-
                                     </select>
                                 </div>
                                 <div className="mb-4 flex items-center">
                                     <label htmlFor="supervisor" className="block text-sm font-semibold text-gray-700 mr-2">Supervisor:</label>
-                                    <input type="text" id="supervisor" name="supervisor" placeholder='Enter supervisor id' className="mt-1 focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md" value={formData.supervisor} onChange={handleChange} />
+                                    <select id="supervisor" name="supervisor" className="mt-1 focus:ring-indigo-500 bg-gray-200 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 border-2 rounded-md" value={formData.supervisor} onChange={handleChange}>
+                                        <option value="">Select Supervisor</option>
+                                        {supervisors.map((supervisor) => (
+                                            <option key={supervisor._id} value={supervisor._id}>
+                                                {supervisor.profile?.fullName || 'Unnamed Supervisor'}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                                 <div className="mb-4 flex items-center">
                                     <label htmlFor="program" className="block text-sm font-semibold text-gray-700 mr-4">Program:</label>

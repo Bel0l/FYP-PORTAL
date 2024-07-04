@@ -99,7 +99,7 @@ function SupervisorProjectRequest() {
               {requests.map((request, index) => (
                 <tr key={index} className={index % 2 === 0 ? "bg-purple-200 py-2" : ""}>
                   <td>
-                    <Link to='/SupervisorProReqDetails'>{request._id}</Link>
+                    <Link to={`/SupervisorProReqDetails/${request._id}`}>{request._id}</Link>
                   </td>
                   <td>{request.student?.profile?.fullName || 'N/A'}</td>
                   <td>{request.projectTitle}</td>

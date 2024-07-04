@@ -56,6 +56,7 @@ router.get('/requests', protect, authorize('supervisor', 'student'), async (req,
     res.status(500).json({ error: error.message });
   }
 });
+
 // Supervisor accepts a project
 router.put('/requests/:projectId/accept', protect, authorize('supervisor'), async (req, res) => {
   try {
@@ -73,6 +74,20 @@ router.put('/requests/:projectId/accept', protect, authorize('supervisor'), asyn
     res.status(500).json({ message: error.message });
   }
 });
+
+// Get a specific project request by ID
+router.get('/requests/:id', protect,authorize('student', 'supervisor'), async (req, res) => {
+  try {
+    const project = await Project.findById(req.params.id).populate('student');
+    if (!project) {
+      return res.status(404).json({ message: 'Project request not found' });
+    }
+    res.json(project);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 
 
